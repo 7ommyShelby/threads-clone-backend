@@ -51,7 +51,7 @@ const getpost = async (req, res) => {
 
     try {
 
-        const post = await postmodel.findById(id).populate("text", "username",usermodel);
+        const post = await postmodel.findById(id).populate("postedBy", "username",usermodel);
         
         if (!post) {
             return res.status(400).json({
