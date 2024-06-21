@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/userposts/:id", userauth, userposts)
 router.get("/feed", userauth, feedpost)
-router.get("/:id", getpost)
+router.get("/:id", getpost) 
 router.post("/create",userauth, createpost);
 router.post("/like/:id", userauth, likepost);
 router.post("/reply/:id", userauth, replypost);
