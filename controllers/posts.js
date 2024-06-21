@@ -53,7 +53,6 @@ const getpost = async (req, res) => {
 
         const post = await postmodel.findById(id).populate("text", "username",usermodel);
         
-
         if (!post) {
             return res.status(400).json({
                 message: "Post not found"
