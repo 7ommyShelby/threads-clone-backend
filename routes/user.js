@@ -1,9 +1,11 @@
 const express = require("express");
-const { usersignup, userlogin, userfollow, updateuser, userprofile, userinfo } = require("../controllers/user")
+const { usersignup, userlogin, userfollow, updateuser, userprofile, userinfo, getallusers } = require("../controllers/user")
 const userauth = require("../middlewares/userauth")
 
 
 const router = express.Router();
+
+router.get("/getusers", getallusers)
 router.get("/userinfo", userauth, userinfo)
 router.get("/profile/:query", userprofile)
 router.post("/signup", usersignup);

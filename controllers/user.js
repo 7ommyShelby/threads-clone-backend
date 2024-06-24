@@ -166,11 +166,7 @@ const updateuser = async (req, res) => {
 
         let user = await usermodel.findById(userid);
 
-        // console.log("updatelogged", user);
-
         const loggeduserid = userid.toString()
-
-        // console.log(loggeduserid, req.params.id);
 
         if (req.params.id !== loggeduserid) {
             return res.status(400).json({ message: " Login into your account,  Hacker nahi ho!" })
@@ -222,13 +218,21 @@ const userinfo = async (req, res) => {
 
 }
 
+const getallusers = async (req, res) => {
+    const allusers = await usermodel.find().select("-password").select("-createdAt");
+
+    res.json(allusers)
+
+}
+
 const usercontroller = {
     userprofile,
     usersignup,
     userlogin,
     userfollow,
     updateuser,
-    userinfo
+    userinfo,
+    getallusers
 }
 
 module.exports = usercontroller
