@@ -112,8 +112,6 @@ const userlogin = async (req, res) => {
 
 const userfollow = async (req, res) => {
 
-    // console.log("from middleware" , req.user);
-
     try {
         const { id } = req.params;
 
@@ -123,8 +121,6 @@ const userfollow = async (req, res) => {
         console.log("selected profile", modifyuser, "loggedin profile", currentuser);
 
         const loggedid = req.user._id.toString()
-
-        // console.log(loggedid);
 
         if (id === loggedid) return res.status(400).json({
             message: "Invalid action"
@@ -219,6 +215,7 @@ const userinfo = async (req, res) => {
 }
 
 const getallusers = async (req, res) => {
+
     const allusers = await usermodel.find().select("-password").select("-createdAt");
 
     res.json(allusers)
