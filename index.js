@@ -9,35 +9,36 @@ const app = express();
 
 const port = process.env.PORT;
 
-const corsOptions = {
-    origin: ["https://threads-clone-frontend-mu.vercel.app", "http://localhost:5173"],
-    credentials: true
-}
+// const corsOptions = {
+//     origin: ["https://threads-clone-frontend-mu.vercel.app", "http://localhost:5173"],
+//     credentials: true
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
     const allowedOrigins = [
-      "https://threads-clone-frontend-mu.vercel.app",
-      "http://localhost:5173"
+        "https://threads-clone-frontend-mu.vercel.app",
+        "http://localhost:5173"
     ];
-  
+
     const origin = req.headers.origin;
-  
+    console.log("origin here +",origin);
+    
     if (allowedOrigins.includes(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
+        res.setHeader('Access-Control-Allow-Origin', origin);
     }
-  
+
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  
+
     // Handle preflight requests
     if (req.method === 'OPTIONS') {
-      return res.sendStatus(204);
+        return res.sendStatus(204);
     }
-  
+
     next();
-  });
+});
 
 
 
