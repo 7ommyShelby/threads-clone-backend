@@ -200,6 +200,7 @@ const feedpost = async (req, res) => {
 const userposts = async (req, res)=>{
 
     const {id} = req.params;
+    
     console.log("_= ",id);
 
     const posts  = await postmodel.find({postedBy : id}).populate("postedBy", "username", usermodel);
