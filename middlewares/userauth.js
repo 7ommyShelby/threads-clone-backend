@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 
 const userauth = async (req, res, next) => {
 
-     console.log("______ jwt    ",jwt.verify(req.headers.authorization, process.env.JWTKEY))// "jwtverification");
+    //  console.log("______ jwt    ",jwt.verify(req.headers.authorization, process.env.JWTKEY))// "jwtverification");
 
     try {
 
