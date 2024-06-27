@@ -8,8 +8,12 @@ const postrouter = require('./routes/posts')
 const app = express();
 
 const port = process.env.PORT;
+const corsOptions = {
+    origin : "*",
+    credentials : true
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
