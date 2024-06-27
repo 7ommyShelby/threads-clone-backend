@@ -8,8 +8,9 @@ const postrouter = require('./routes/posts')
 const app = express();
 
 const port = process.env.PORT;
+
 const corsOptions = {
-    origin : "*",
+    origin : ["https://threads-clone-frontend-mu.vercel.app", "http://localhost:5173"],
     credentials : true
 }
 

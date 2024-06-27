@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken")
 
 const userauth = async (req, res, next) => {
 
+     console.log("______ jwt    ",jwt.verify(req.headers.authorization, process.env.JWTKEY))// "jwtverification");
+
     try {
 
         if (!req.headers.authorization) {
@@ -12,9 +14,8 @@ const userauth = async (req, res, next) => {
             })
         }
         // console.log(!true);
-        //  console.log(!jwt.verify(req.headers.authorization, process.env.JWTKEY), "jwtverification");
 
-        if (!jwt.verify(req.headers.authorization, process.env.JWTKEY)) {
+        if (!jwt.verify(req.headers.authorization, process.env.JWTKEY)) {//ye error
             return res.status(400).json({
                 message: "UnAuthorized User"
             })
@@ -36,7 +37,7 @@ const userauth = async (req, res, next) => {
         next();
 
     } catch (error) {
-        console.log("something went wrong in auth", error.message);
+        console.log("something went wrong in auth _", error);
         res.status(401).json({
             status : "Expired",
             message: error.message
